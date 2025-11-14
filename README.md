@@ -140,6 +140,7 @@ onmf-timeseries/
 
 - `docs/user_guide.md`: step-by-step walkthrough of the training/evaluation loop.
 - `docs/api_reference.md`: module summaries for high-level usage.
+- - `docs/algorithms.md`: detailed walkthrough of the implemented algorithms..
 - `examples/financial_markets/README.md`: detailed description of the experiment script and configuration knobs.
 
 New contributors should start with the user guide, then inspect `src/onmf/model.py` for the algorithmic details.
