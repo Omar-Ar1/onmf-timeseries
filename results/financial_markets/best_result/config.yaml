@@ -1,0 +1,49 @@
+# Configuration for Financial Markets Time-Series Prediction
+
+data:
+  # Asset tickers to analyze (Yahoo Finance format)
+  tickers:
+    - AAPL    # Apple
+    - GOOGL   # Google
+    - MSFT    # Microsoft
+    - AMZN    # Amazon
+    - TSLA    # Tesla
+  
+  # Date range
+  start_date: "2020-01-01"
+  end_date: null  # null means today
+  
+  # Features to extract
+  features:
+    - Close
+    - High
+    - Low
+    - Open
+  
+  # Preprocessing
+  compute_returns: false     # Convert prices to returns
+  return_type: log          # 'log' or 'simple'
+  train_ratio: 0.9          # Train/test split
+
+model:
+  # Dictionary parameters
+  r: 10                     # Number of dictionary atoms
+  k: 6                      # Temporal window size (days)
+  
+  # Training parameters
+  batch_size: 20            # Minibatch size for initialization
+  N: 100                    # History window size
+  max_iter: 800             # Max iterations for sub-problems
+  tol: 1.0e-5               # Convergence tolerance
+  
+  # Regularization
+  lambda_: 1.0                # L1 regularization (online phase)
+  beta: 4.0                 # Decay rate (online phase)
+  lambda_minB: 3.0            # L1 regularization (minibatch phase)
+  beta_minB: 1.0             # Decay rate (minibatch phase)
+  lambda_pred: 0.0           # L1 regularization (prediction)
+
+output:
+  results_dir: "../onmf-timeseries/results/financial_markets/2"
+
+...

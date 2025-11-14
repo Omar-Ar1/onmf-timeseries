@@ -1,0 +1,35 @@
+PRE_COMMIT_CONFIG = """
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+        language_version: python3
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        args: ['--max-line-length=100', '--ignore=E203,W503']
+"""
+
+if __name__ == "__main__":
+    print("Project Structure Setup Guide")
+    print("=" * 60)
+    print("\nThis file contains all configuration files needed.")
+    print("Copy the content of each variable to create the files.\n")
+    print("Available configurations:")
+    print("  - requirements.txt")
+    print("  - setup.py")
+    print("  - pyproject.toml")
+    print("  - .gitignore")
+    print("  - README.md")
+    print("  - .pre-commit-config.yaml")

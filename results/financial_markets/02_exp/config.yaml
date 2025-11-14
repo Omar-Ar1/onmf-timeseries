@@ -1,0 +1,76 @@
+# Configuration for Financial Markets Time-Series Prediction
+
+data:
+  # Asset tickers to analyze (Yahoo Finance format)
+  tickers:
+    - AAPL    # Apple
+    - GOOGL   # Google
+    - MSFT    # Microsoft
+    - AMZN    # Amazon
+    - TSLA    # Tesla
+  
+  # Date range
+  start_date: "2020-01-01"
+  end_date: null  # null means today
+  
+  # Features to extract
+  features:
+    - Close
+    - High
+    - Low
+    - Open
+  
+  # Preprocessing
+  compute_returns: false     # Convert prices to returns
+  return_type: log          # 'log' or 'simple'
+  train_ratio: 0.9        # Train/test split (Here we keep around 30 days for forecasting)
+
+model:
+  # Dictionary parameters
+  r: 6                     # Number of dictionary atoms
+  k: 14                      # Temporal window size (days)
+  
+  # Training parameters
+  batch_size: 32            # Minibatch size for initialization
+  N: 120                    # History window size
+  max_iter: 800             # Max iterations for sub-problems
+  tol: 1.0e-5               # Convergence tolerance
+  
+  # Regularization
+  lambda_: 0.157                # L1 regularization (online phase)
+  beta: 0.119                 # Decay rate (online phase)
+  lambda_minB: 0.2            # L1 regularization (minibatch phase)
+  beta_minB: 0.95             # Decay rate (minibatch phase)
+  lambda_pred: 0.646           # L1 regularization (prediction)
+
+output:
+  results_dir: "../onmf-timeseries/results/financial_markets/best_config"
+
+...
+
+# Alternative configurations for different scenarios
+
+# High-frequency trading (shorter window)
+# model:
+#   r: 50
+#   k: 3
+#   N: 50
+#   lambd: 0.5
+
+# Long-term patterns (longer window)
+# model:
+#   r: 20
+#   k: 20
+#   N: 250
+#   lambd: 2.0
+
+# Crypto markets (high volatility)
+# data:
+#   tickers: [BTC-USD, ETH-USD, BNB-USD]
+# model:
+#   r: 40
+#   k: 7
+#   lambd: 0.3
+
+
+
