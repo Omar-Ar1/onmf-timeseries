@@ -1,7 +1,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
-  <img src="https://img.shields.io/badge/Code%20style-black-000000.svg" alt="Black">
+  <img src="https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg" alt="PyTorch">
+  <a href="https://deepwiki.com/Omar-Ar1/onmf-timeseries"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </p>
 
 # Online NMF for Time-Series Forecasting
@@ -11,8 +12,11 @@ This repository contains a reproducible implementation of the Online Non-Negativ
 
 > Lyu, H., Strohmeier, C., Menz, G., & Needell, D. (2020).  
 > *COVID-19 Time-series Prediction by Joint Dictionary Learning and Online NMF*. arXiv:2004.09112.
+> 
+<p align="center">
+  <img src="docs/01_nmf_illustration.png" alt="NonNegative Matrix Factorization Illustration" width="600">
+</p>
 
-![NonNegative Matrix Factorization Illustration](docs/01_nmf_illustration.png)
 
 ---
 
@@ -23,6 +27,7 @@ This repository contains a reproducible implementation of the Online Non-Negativ
 - **Forecasting utilities**: one-step-ahead reconstruction, atom-importance metrics, and rich visualization helpers (`src/onmf/visualization.py`).
 - **Baselines & evaluation**: Naive, Moving Average, Ridge-based Linear AR, ARIMA, and block-bootstrap confidence intervals (`src/onmf/baselines.py`, `src/onmf/utils.py`).
 - **Reproducible example**: `examples/financial_markets/run_analysis.py` orchestrates the full experiment from data download to plots and CSV metrics.
+- **Fully PyTorch implementation**: GPU-ready and optimized for large-scale applications, extending the original NumPy prototype.
 
 ---
 
@@ -96,7 +101,10 @@ Modify `examples/financial_markets/config.yaml` to change tickers, features, tra
 
 ## Results Snapshot
 
-![ONMF Evaluation Results](docs/02_evaluation_results.png)
+<p align="center">
+  <img src="docs/02_evaluation_results.png" alt="ONMF Evaluation Results" width="700">
+</p>
+
 
 The best experiment stored in `results/financial_markets/best_result/` achieved the following metrics on AAPL close-price forecasting (lower is better except Direction Accuracy). We forecast the next 148 days autoregressively:
 
